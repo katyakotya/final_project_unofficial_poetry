@@ -2,4 +2,24 @@
 title: "02_cleaning"
 format: html
 ---
+```{r clean}
+library(stringr)
 
+text <- readLines("Все_авторы.txt", encoding="UTF-8")
+text <- paste(text, collapse="\n")
+
+cat("Начальный объем:", nchar(text), "символов\n")
+
+# Основные замены
+text <- gsub("[0-9]+", "", text)                    # Убрать цифры
+text <- gsub("[|\\\\/\\[\\]]", " ", text)       # Убрать спецсимволы  
+text <- gsub("\\s+", " ", text)                     # Убрать лишние пробелы
+text <- gsub("\n{3,}", "\n\n", text)                # Нормализовать переносы
+text <- gsub("-\n", "", text)                        # Убрать переносы слов через дефис
+text <- gsub("^\\s+|\\s+$", "", text, perl = TRUE)   # Убрать пробелы в начале/конце
+
+cat("Конечный объем:", nchar(text), "символов\n")
+
+writeLines(text, "Все_авторы_clean.txt", useBytes=TRUE)
+
+```

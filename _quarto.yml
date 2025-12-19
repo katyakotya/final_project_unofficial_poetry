@@ -3,12 +3,21 @@ project:
   output-dir: docs
 
 website:
-  title: "unofficial_poetry"
+  title: "Проверяя темную поэзию подсчетом"
   navbar:
     left:
       - href: index.qmd
-        text: Home
-      - about.qmd
+        text: Герои и задачи проекта
+      - href: 01_extraction.qmd
+        text: Шаг 1. Извлечение текста 
+      - href: 02_cleaning.qmd
+        text: Шаг 2. Очистка текста 
+      - href: 03_lemmatization.qmd
+        text: Шаг 3. Частотный словарь
+      - href: 04_collocations.qmd
+        text: Шаг 4. Коллокации
+      - href: about.qmd
+        text: Выводы
 
 format:
   html:
